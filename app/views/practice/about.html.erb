@@ -1,0 +1,26 @@
+<!-- adding style here because can't pass Ruby instance variables to CSS -->
+
+<style>
+
+  #color_me_in {
+    background-color: <%= @color %>;
+    color: white;
+    width: 250px;
+    height: 250px;
+  }
+
+</style>
+
+<div id="color_me_in">
+  <p>
+
+    <%= @color %> Box Activated!
+  </p>
+</div>
+
+<%= form_tag index_path do %>
+
+  <p><%= text_field_tag :name, nil, placeholder: "What's your name?" %></p>
+  <p><%= submit_tag :submit %></p>
+
+<% end %>
