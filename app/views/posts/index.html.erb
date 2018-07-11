@@ -1,42 +1,33 @@
+<style>
+
+  #text_color {
+    color: white;
+  }
+
+</style>
+
 <p id="notice"><%= notice %></p>
 
 <h1>All Posts</h1>
 
-<!-- <div class="panel-group">
-    <div class="panel panel-default">
-    <div class="panel-heading">Title</div>
-    <div class="panel-body"></div>
-  </div>
-</div> -->
-
 <div class="panel panel-default">
-<div>
-    <div class="panel-heading">
-  <div>
-    <div>
-    Title
-    Author
-    Blog entry
 
-    </div>
-  </div>
-</div>
-
-
-  <div class="panel-body">
     <% @posts.each do |post| %>
-      <div>
-        <div><%= post.title %></div>
-        <div><%= post.author %></div>
-        <div><%= post.blog_entry %></div>
-        <div><%= link_to 'Show', post %></div>
-        <div><%= link_to 'Edit', edit_post_path(post) %></div>
-        <div><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-      </div>
-    <% end %>
-  </div>
+        <div class="panel-heading"><%= post.title %></div>
+        <div><%= "by " + post.author %></div>
+        <div class="panel-body"><%= post.blog_entry %></div>
 
-</div>
+        <div class="panel-footer" id="text_color">
+
+        <button type="button" class="btn btn-primary" id: "text_color"><%= link_to 'Show', post %></button>
+
+        <button type="button" class="btn btn-warning"><%= link_to 'Edit', edit_post_path(post) %></button>
+
+        <button type="button" class="btn btn-danger"><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+
+        </div>
+    <% end %>
+
 </div>
 
 <br>
