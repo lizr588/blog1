@@ -20,7 +20,7 @@
     <% @posts.each do |post| %>
 
         <div class="panel-heading"><%= post.title %></div>
-        <div>by <%= post.user.username %> <%= gravatar_tag current_user.email, size: 20 %> <%= post.created_at %></div>
+        <div>by <em><%= link_to post.user.username, user_posts_path(name: post.user.username) %> <%= image_tag current_user.avatar.url, size: 20 %></em> <%= post.created_at %></div>
         <div class="panel-body"><%= post.blog_entry %></div>
 
         <div class="panel-footer" id="text_color">
@@ -33,7 +33,7 @@
 
       </div>
     <% end %>
-
+    <%= paginate @posts %>
   </div>
 </div>
 </div>

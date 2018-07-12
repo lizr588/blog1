@@ -2,11 +2,14 @@ class PostsController < ApplicationController
   # what can be set before page is run
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
+  def user_posts
+    @user = User.find_by(username: params[:name])
+  end
   # GET /posts
   # GET /posts.json
   # posts is plural bc we want active record to put all posts in one variable
   def index
-    @posts = Post.all
+    @posts = Post.all.page(params[:page])
   end
 
   # GET /posts/1
