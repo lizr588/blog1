@@ -8,28 +8,36 @@
 
 <p id="notice"><%= notice %></p>
 
-<h1>All Posts</h1>
+<div class="container">
 
-<div class="panel panel-default">
+  <div class="row">
+    <div class="col-md-12"></div>
+    <h1>All Posts</h1>
 
+    <div class="row">
+      <div class="col-sm-6"></div>
+      <div class="panel panel-default">
     <% @posts.each do |post| %>
+
         <div class="panel-heading"><%= post.title %></div>
-        <div>by <%= post.user.username %></div>
+        <div>by <%= post.user.username %> <%= gravatar_tag current_user.email, size: 20 %> <%= post.created_at %></div>
         <div class="panel-body"><%= post.blog_entry %></div>
 
         <div class="panel-footer" id="text_color">
 
-        <button type="button" class="btn btn-primary" id: "text_color"><%= link_to 'Show', post %></button>
+        <button type="button" class="btn btn-primary text" ><%= link_to 'Show', post %></button>
 
         <button type="button" class="btn btn-warning"><%= link_to 'Edit', edit_post_path(post) %></button>
 
         <button type="button" class="btn btn-danger"><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></button>
 
-        </div>
+      </div>
     <% end %>
 
+  </div>
 </div>
-
+</div>
+</div>
 <br>
 
 <%= link_to 'New Post', new_post_path %>
